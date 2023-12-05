@@ -1,0 +1,18 @@
+
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+
+<body>
+    <a-scene>
+
+        <a-asset-item id="model" src="assets/Blender_AR_test2.gltf" ></a-asset-item>  
+
+        <a-entity gltf-model="#model" 
+        scale="0.25 0.25 0.25" 
+        animation-mixer="true"
+        position="0 -2 -5"
+        ></a-entity>
+
+        <a-entity camera look-controls></a-entity>
+      </a-scene>
+</body>
