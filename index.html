@@ -14,12 +14,15 @@
 
   <body style="margin : 0px; overflow: hidden;">
     <!-- a-frame scene -->
-    <a-scene embedded style="height: 0; padding-bottom: 60%;" renderer="logarithmicDepthBuffer: true;">
+    <a-scene embedded style="height: 0; padding-bottom: 99%;" renderer="logarithmicDepthBuffer: true;">
     <a-assets timeout="30000">
       <a-asset-item id="model" src="assets/Kerstman_video_build6Exportv3.gltf"></a-asset-item>
     </a-assets>
   
-    <a-camera position="0 5 15"></a-camera>
+    <!-- <a-camera position="0 2 15" fov="100"></a-camera> -->
+    <a-entity id="rig" position="0 2 15">
+      <a-entity id="camera" camera look-controls></a-entity>
+    </a-entity>
   
     <!-- 2D environment omitted for simplicity -->
   
