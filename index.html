@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene renderer="logarithmicDepthBuffer: true;" mindar-image="missTolerance: 1; warmupTolerance: 1; filterMinCF:0.1; filterBeta: 10; imageTargetSrc: assets/tracker/targets (1).mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene renderer="logarithmicDepthBuffer: true;" mindar-image="missTolerance: 1; warmupTolerance: 3; filterMinCF:0.01; filterBeta: 1; imageTargetSrc: assets/tracker/targets (1).mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <img id="card" src="assets/Hiro_marker_ARjs.png" />
         <a-asset-item id="model" src="assets/Kerstman_video_build6Export.gltf"></a-asset-item>
@@ -31,10 +31,10 @@
       <a-entity mindar-image-target="targetIndex: 0">
         <a-plane src="#card" position="0 0 0" width="1" rotation="0 0 0"></a-plane>
         <a-entity id="model" rotation="90 0 0" scale="0.15 0.15 0.15">
-            <a-entity position="0 0 0" rotation="10 0 0"
+            <a-entity position="0 0 0" rotation="0 0 0"
                       gltf-model="#model"
                       animation-mixer
-                      shadow="cast: true; receive: true"></a-entity>
+                      shadow="cast: true; receive: false"></a-entity>
           </a-entity>
       </a-entity>
     </a-scene>
