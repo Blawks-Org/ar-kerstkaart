@@ -1,39 +1,41 @@
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Merry Chrysler!</title>
-    <!-- import aframe and then ar.js with image tracking / location based features -->
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<script async src="https://unpkg.com/es-module-shims@1.7.3/dist/es-module-shims.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.147.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.147.0/examples/jsm/",
+    "mindar-image-three":"https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-three.prod.js"
+  }
+}
+</script>
+<script type="module">
+    import * as THREE from 'three';
+    import { MindARThree } from 'mindar-image-three';
+  </script>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
   </head>
+  <body>
+    <a-scene renderer="logarithmicDepthBuffer: true;" mindar-image="warmupTolerance: 1; filterMinCF:0.1; filterBeta: 10; imageTargetSrc: assets/tracker/targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="card" src="assets/Hiro_marker_ARjs.png" />
+        <a-asset-item id="model" src="assets/Kerstman_video_build6Export.gltf"></a-asset-item>
+      </a-assets>
 
-  <body style="margin : 0px; overflow: hidden; aspect-ratio: 16/9;">
-    <!-- a-frame scene -->
-    <a-scene embedded style="height: 0; padding-bottom: 99%;" renderer="logarithmicDepthBuffer: true;">
-    <a-assets timeout="30000">
-      <a-asset-item id="model" src="assets/Kerstman_video_build6Exportv3.gltf"></a-asset-item>
-    </a-assets>
-  
-    <!-- <a-camera position="0 2 15" fov="100"></a-camera> -->
-    <a-entity id="rig" position="0 5 40">
-      <a-entity id="camera" camera look-controls></a-entity>
-    </a-entity>
-  
-    <!-- 2D environment omitted for simplicity -->
-  
-    <a-entity id="model" position="0 0 0" scale="1 1 1">
-      <a-entity position="0 0 0" rotation="10 30 0"
-                gltf-model="#model"
-                animation-mixer
-                shadow="cast: true; receive: true"></a-entity>
-    </a-entity>
-  
-    <!-- Lights configuration omitted for simplicity -->
-  </a-scene>
+      <a-camera position="0 0 0" look-controls="enabled: true"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane src="#card" position="0 0 0" width="1" rotation="0 0 0"></a-plane>
+        <a-entity id="model" rotation="90 0 0" scale="0.15 0.15 0.15">
+            <a-entity position="0 0 0" rotation="10 0 0"
+                      gltf-model="#model"
+                      animation-mixer
+                      shadow="cast: true; receive: true"></a-entity>
+          </a-entity>
+      </a-entity>
+    </a-scene>
   </body>
-</html>
