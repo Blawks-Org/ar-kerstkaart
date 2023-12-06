@@ -1,18 +1,36 @@
 
-<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Merry Chrysler!</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
+  </head>
 
-<body>
-    <a-scene>
-
-        <a-asset-item id="model" src="assets/Blender_AR_test2.gltf" ></a-asset-item>  
-
-        <a-entity gltf-model="#model" 
-        scale="0.25 0.25 0.25" 
-        animation-mixer="true"
-        position="0 -2 -5"
-        ></a-entity>
-
-        <a-entity camera look-controls></a-entity>
-      </a-scene>
-</body>
+  <body style="margin : 0px; overflow: hidden;">
+    <!-- a-frame scene -->
+    <a-scene renderer="logarithmicDepthBuffer: true;">
+    <a-assets timeout="30000">
+      <a-asset-item id="model" src="assets/Kerstman_video_build6Exportv3.gltf"></a-asset-item>
+    </a-assets>
+  
+    <a-camera position="0 5 15"></a-camera>
+  
+    <!-- 2D environment omitted for simplicity -->
+  
+    <a-entity id="dino" position="0 0 0" scale="0.5 0.5 0.5">
+      <a-entity position="0 2.15 0" rotation="0 0 0"
+                gltf-model="#model"
+                animation-mixer
+                shadow="cast: true; receive: false"></a-entity>
+    </a-entity>
+  
+    <!-- Lights configuration omitted for simplicity -->
+  </a-scene>
+  </body>
+</html>
